@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -111,8 +111,24 @@ WSGI_APPLICATION = 'assessment_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('assessment'),
+        'USER': config('postgres'),
+        'PASSWORD': config('K@2026'),
+        'HOST': config('localhost'),
+        'PORT': config('5432'),
+    }
+}
+
+CACHES = {
+    'default': {   
+        
+        'BACKEND': 'django_Redis.cache.RedisCache',
+        'LOCATION': f"redis://{config('localhost')}:{config('6379')}/1",
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_Redis.client.DefaultClient',
+        },
+
     }
 }
 
