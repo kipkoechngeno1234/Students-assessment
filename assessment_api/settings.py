@@ -69,6 +69,12 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': False,
 }
 
+#configure API Documentation
+SPECTACULAR_SETTIINGS= {
+    'TITLE': 'Student Assessment API',
+    'DESCRIPTION': 'API for managing student assessments',
+    'VERSION': '1.0.0',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
