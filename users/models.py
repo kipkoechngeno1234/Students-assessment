@@ -14,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         (STUDENT, "Student"),
     ]
 
-    Email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True)
     
     role = models.CharField(max_length=25, choices=ROLE_CHOICES, default=STUDENT)
     

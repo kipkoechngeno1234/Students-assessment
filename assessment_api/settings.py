@@ -112,23 +112,21 @@ WSGI_APPLICATION = 'assessment_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('assessment'),
-        'USER': config('postgres'),
-        'PASSWORD': config('K@2026'),
-        'HOST': config('localhost'),
-        'PORT': config('5432'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
 CACHES = {
-    'default': {   
-        
-        'BACKEND': 'django_Redis.cache.RedisCache',
-        'LOCATION': f"redis://{config('localhost')}:{config('6379')}/1",
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_Redis.client.DefaultClient',
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
-
     }
 }
 
